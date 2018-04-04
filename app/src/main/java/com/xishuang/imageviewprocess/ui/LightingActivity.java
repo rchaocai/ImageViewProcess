@@ -9,6 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.xishuang.imageviewprocess.R;
+import com.xishuang.imageviewprocess.util.ImageUtil;
 
 /**
  * Author:xishuang
@@ -84,8 +85,7 @@ public class LightingActivity extends AppCompatActivity implements SeekBar.OnSee
         tvAddColorText.setText(addText);
         tvAddColor.setBackgroundColor(addColor);
 
-        //关键代码，设置LightingColorFilter
-        imageView.setColorFilter(new LightingColorFilter(plusColor, addColor));
+        ImageUtil.displayImageLighting(imageView, plusColor, addColor);
     }
 
     @Override

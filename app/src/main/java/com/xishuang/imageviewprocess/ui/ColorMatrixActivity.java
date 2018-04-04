@@ -40,22 +40,7 @@ public class ColorMatrixActivity extends AppCompatActivity implements SeekBar.On
     private SeekBar sBSaturation;
     private SeekBar sBBrightness;
 
-    ColorMatrix colorMatrix = new ColorMatrix();
-    /**
-     * 色调，改变颜色
-     */
-    ColorMatrix hueMatrix = new ColorMatrix();
-    /**
-     * 饱和度，改变颜色的纯度
-     */
-    ColorMatrix saturationMatrix = new ColorMatrix();
-    /**
-     * 亮度，颜色不变
-     */
-    ColorMatrix brightnessMatrix = new ColorMatrix();
-
     private List<? extends Map<String, ?>> mDataList;
-    float[] matrix = SpecialColorMatrix.getDefault();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,28 +82,8 @@ public class ColorMatrixActivity extends AppCompatActivity implements SeekBar.On
         value = format.format(brightnessValue);
         tvBrightnessText.setText("亮度值：" + value);
 
-        //设置色相，为0°和360的时候相当于原图
-        hueMatrix.reset();
-        hueMatrix.setRotate(0, hueValue);
-        hueMatrix.setRotate(1, hueValue);
-        hueMatrix.setRotate(2, hueValue);
-
-        //设置饱和度，为1的时候相当于原图
-        saturationMatrix.reset();
-        saturationMatrix.setSaturation(saturationValue);
-
-        //亮度，为1的时候相当于原图
-        brightnessMatrix.reset();
-        brightnessMatrix.setScale(brightnessValue, brightnessValue, brightnessValue, 1);
-
-        //将上面三种效果和选中的模式混合在一起
-        colorMatrix.reset();
-        colorMatrix.postConcat(new ColorMatrix(matrix));
-        colorMatrix.postConcat(hueMatrix);
-        colorMatrix.postConcat(saturationMatrix);
-        colorMatrix.postConcat(brightnessMatrix);
-
-        imageView.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+        //图像处理
+        ImageUtil.displayImageColorMatrixHSB(imageView, hueValue, saturationValue, brightnessValue);
     }
 
     @Override
@@ -169,8 +134,7 @@ public class ColorMatrixActivity extends AppCompatActivity implements SeekBar.On
                     @Override
                     public void onClick(View v) {
                         int position = holder.getLayoutPosition();
-                        Toast.makeText(ColorMatrixActivity.this, (String) mDataList.get(position).get("title"), Toast.LENGTH_SHORT).show();
-                        matrix = ImageUtil.displayImageColorMatrix(imageView, (Integer) mDataList.get(position).get("value"));
+                        ImageUtil.displayImageColorMatrix(imageView, (Integer) mDataList.get(position).get("value"));
                         tvModeText.setText("模式：" + mDataList.get(position).get("title"));
                     }
                 });

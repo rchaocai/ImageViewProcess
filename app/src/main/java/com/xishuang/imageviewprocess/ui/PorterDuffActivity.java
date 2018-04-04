@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xishuang.imageviewprocess.R;
+import com.xishuang.imageviewprocess.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,8 +82,8 @@ public class PorterDuffActivity extends AppCompatActivity implements SeekBar.OnS
         mColor = Color.argb(sBA.getProgress(), sBR.getProgress(), sBG.getProgress(), sBB.getProgress());
         tvColorText.setText(addText);
         tvColor.setBackgroundColor(mColor);
-        //关键代码，设置PorterDuffColorFilter
-        imageView.setColorFilter(new PorterDuffColorFilter(mColor, mode));
+
+        ImageUtil.displayImagePorterDuff(imageView, mColor, mode);
     }
 
     @Override
@@ -146,7 +147,6 @@ public class PorterDuffActivity extends AppCompatActivity implements SeekBar.OnS
                     public void onClick(View v) {
                         int position = holder.getLayoutPosition();
                         mode = (PorterDuff.Mode) mDataList.get(position).get("value");
-                        Toast.makeText(PorterDuffActivity.this, (String) mDataList.get(position).get("title"), Toast.LENGTH_SHORT).show();
                         imageView.setColorFilter(new PorterDuffColorFilter(mColor, mode));
                         tvModeText.setText("模式：" + mDataList.get(position).get("title"));
                     }
