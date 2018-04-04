@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_lighting"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="LightingColorFilter的使用"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/bt_porterduff"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="PorterDuffColorFilter的使用"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/bt_colormatrix"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="ColorMatrixColorFilter的使用"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+</LinearLayout>

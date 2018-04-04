@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2015. http://www.mmclick.com Inc. All rights reserved.
+  ~
+  ~ 注意：本内容仅限于广州魅媒网络科技有限公司内部传阅，禁止外泄以及用于其他的商业目的。
+  -->
+
+<LinearLayout
+    android:id="@+id/alc_card_manager_item_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:id="@+id/porter_duff_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:singleLine="true"
+        android:textSize="20dp"/>
+</LinearLayout>

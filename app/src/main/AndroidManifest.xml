@@ -6,5 +6,22 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.LightingActivity"
+            android:label="LightingColorFilter的使用" />
+        <activity
+            android:name=".ui.PorterDuffActivity"
+            android:label="PorterDuffColorFilter的使用" />
+        <activity
+            android:name=".ui.ColorMatrixActivity"
+            android:label="ColorMatrixColorFilter的使用" />
+    </application>
 </manifest>
