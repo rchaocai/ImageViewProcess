@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.xishuang.imageviewprocess.util.ImageUtil;
 import com.xishuang.imageviewprocess.R;
+import com.xishuang.imageviewprocess.security.DecryptUtil;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private TextView contentTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bt_lighting).setOnClickListener(this);
         findViewById(R.id.bt_porterduff).setOnClickListener(this);
         findViewById(R.id.bt_colormatrix).setOnClickListener(this);
+
+        contentTv = (TextView) findViewById(R.id.bt_text);
+
+        inputData();
+    }
+
+    private void inputData() {
+        InputStream in = DecryptUtil.onObtainInputStream(this);
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in, "GBK"));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            contentTv.setText(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
