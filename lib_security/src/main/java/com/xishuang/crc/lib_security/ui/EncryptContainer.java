@@ -226,14 +226,16 @@ public class EncryptContainer extends Container implements ActionListener {
      */
     private void randomKey() {
         try {
-            //生成raw key
+            //生成随机数作为seed种子
             String uuid = UUID.randomUUID().toString();
             byte[] seed = uuid.getBytes("UTF-8");
+            //生成AES秘钥
             byte[] rawkey = AES.getRawKey(seed);
             //获取应用签名的密钥对
             KeyPair pair = SignKey.getSignKeyPair();
-            //将raw key加密
+            //通过RSA私钥来加密AES秘钥
             byte[] key = RSA.encrypt(rawkey, pair.getPrivate());
+            //Base64编码成字符串展示
             String base64Key = Base64.encode(key);
             mKeyText.setText(base64Key);
         } catch (Exception e) {

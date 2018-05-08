@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/ImageViewProcess.iml" filepath="$PROJECT_DIR$/ImageViewProcess.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_security/lib_security.iml" filepath="$PROJECT_DIR$/lib_security/lib_security.iml" />
+      <module fileurl="file://F:\project\ImageViewProcess\lib_security\lib_security.iml" filepath="F:\project\ImageViewProcess\lib_security\lib_security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security/security.iml" filepath="$PROJECT_DIR$/security/security.iml" />
     </modules>
   </component>
 </project>
